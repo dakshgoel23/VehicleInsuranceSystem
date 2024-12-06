@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.springboot.VehicleInsuranceSystem.enums.Role;
 import com.springboot.VehicleInsuranceSystem.exception.InvalidUsernameException;
 import com.springboot.VehicleInsuranceSystem.exception.ResourceNotFoundException;
 import com.springboot.VehicleInsuranceSystem.model.User;
@@ -28,6 +29,8 @@ public class UserService {
 		//encrypt the password 
 		String encryptedPass = passEncoder.encode(user.getPassword());
 		user.setPassword(encryptedPass);
+		
+		user.setRole(Role.CUSTOMER);
 		
 		
 		return userRepository.save(user);

@@ -20,7 +20,7 @@ public class PurchaseService {
 		return purchaseRepository.save(customerHasPolicy);
 	}
 
-	public List<Policy> getPoliciesByCustomer(Customer customer) {
+	public List<CustomerHasPolicy> getPoliciesByCustomer(Customer customer) {
 		return purchaseRepository.findbyCustomer(customer);
 	}
 

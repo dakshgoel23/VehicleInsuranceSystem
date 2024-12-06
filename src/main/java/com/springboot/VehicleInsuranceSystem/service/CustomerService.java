@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.VehicleInsuranceSystem.dto.UpdateProfileCustomerDto;
+import com.springboot.VehicleInsuranceSystem.enums.PolicyStatus;
 import com.springboot.VehicleInsuranceSystem.exception.ResourceNotFoundException;
 import com.springboot.VehicleInsuranceSystem.model.Address;
 import com.springboot.VehicleInsuranceSystem.model.Customer;
@@ -27,6 +28,8 @@ public class CustomerService {
 	private UserRepository userRepository;
 	
 	public Customer insert(Customer customer) {
+		
+		
 		return customerRepository.save(customer);
 	}
 
@@ -50,8 +53,9 @@ public class CustomerService {
 		return customerRepository.getActiveCustomers(is_active);
 	}
 
-	public List<Object> findallproposedpolicies(int customer_id) {
-		return customerRepository.findAllProposedPolicies(customer_id);
+	public List<Object> findallproposedpolicies(int customer_id,PolicyStatus status) {
+		
+		return customerRepository.findAllProposedPolicies(customer_id,status);
 	}
 
 	public Customer findCustomer(int customer_id) throws ResourceNotFoundException {

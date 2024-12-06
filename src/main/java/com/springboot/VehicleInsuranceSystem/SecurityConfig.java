@@ -40,11 +40,10 @@ public class SecurityConfig {
 				 	
 				 //Customer APIs
 				 	.requestMatchers(HttpMethod.POST,"/customer/add").permitAll()
-//				 	.requestMatchers(HttpMethod.GET,"/customer/viewall").hasAnyAuthority("EXECUTIVE","CUSTOMER")
-				 	.requestMatchers(HttpMethod.GET,"/customer/viewall").permitAll()
-				 	.requestMatchers(HttpMethod.GET,"/customer/active").hasAnyAuthority("EXECUTIVE","CUSTOMER")
+				 	.requestMatchers(HttpMethod.GET,"/customer/viewall").hasAuthority("ADMIN")
+				 	.requestMatchers(HttpMethod.GET,"/customer/active").hasAnyAuthority("ADMIN","CUSTOMER")
 				 	.requestMatchers(HttpMethod.GET,"/customer/proposedpolicies").permitAll()
-				 	.requestMatchers(HttpMethod.GET,"/customer/details/byId").hasAnyAuthority("EXECUTIVE","CUSTOMER")// A
+				 	.requestMatchers(HttpMethod.GET,"/customer/details/byId").hasAnyAuthority("ADMIN","CUSTOMER")// A
 				 	.requestMatchers(HttpMethod.POST,"/customer/update").hasAuthority("CUSTOMER")
 				 	.requestMatchers(HttpMethod.GET,"/api/get/customer").hasAuthority("CUSTOMER")
 				 	
@@ -53,7 +52,7 @@ public class SecurityConfig {
 				 	
 				 //Executive APIs
 				 	.requestMatchers(HttpMethod.POST,"/executive/add").hasAuthority("ADMIN")
-				    .requestMatchers(HttpMethod.GET,"/executive/viewall").hasAuthority("EXECUTIVE")
+				    .requestMatchers(HttpMethod.GET,"/executive/viewall").hasAuthority("ADMIN")
 				    .requestMatchers(HttpMethod.GET,"/executive/details/byId").hasAnyAuthority("EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION","ADMIN")
 				    .requestMatchers(HttpMethod.POST,"/executive/update").hasAnyAuthority("EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION")
 				    .requestMatchers(HttpMethod.GET,"/api/get/executive").hasAnyAuthority("EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION")
@@ -76,11 +75,14 @@ public class SecurityConfig {
 				    .requestMatchers(HttpMethod.GET,"/policy/category/get").hasAuthority("ADMIN")
 				    .requestMatchers(HttpMethod.GET,"/policy/premium/get").hasAuthority("ADMIN")
 				    .requestMatchers(HttpMethod.GET,"/policy/byStatus").hasAuthority("EXECUTIVE_INSURANCE")
+				    .requestMatchers(HttpMethod.POST,"/policy/accept").hasAuthority("CUSTOMER")
+				    .requestMatchers(HttpMethod.POST,"/policy/reject").hasAuthority("CUSTOMER")
+				
 				    
 				    
 				 //Purchase APIs
-				    .requestMatchers(HttpMethod.POST,"/purchase/policy").hasAuthority("EXECUTIVE")
-				    .requestMatchers(HttpMethod.POST,"/purchase/policy/byCustomer").permitAll()
+				    .requestMatchers(HttpMethod.POST,"/purchase/policy").hasAuthority("CUSTOMER")
+				    .requestMatchers(HttpMethod.POST,"/purchase/policy/byCustomer").hasAuthority("CUSTOMER")
 				   
 				 //VehicleInspection APIs
 				    .requestMatchers(HttpMethod.POST,"/vehicle-inspection/book").hasAuthority("CUSTOMER")

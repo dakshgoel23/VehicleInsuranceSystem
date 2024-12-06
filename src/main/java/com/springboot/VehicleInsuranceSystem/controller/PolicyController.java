@@ -136,6 +136,20 @@ public class PolicyController {
 		return policyService.getPolicies(status);
 	}
 	
+	@PostMapping("/policy/accept")
+	public void acceptPolicy(@RequestParam int policy_id) throws ResourceNotFoundException {
+		Policy policy=policyService.validate(policy_id);
+		policy.setStatus(PolicyStatus.ACCEPTED);
+		policyService.insert(policy);
+	}
+	
+	@PostMapping("/policy/reject")
+	public void rejectPolicy(@RequestParam int policy_id) throws ResourceNotFoundException {
+		Policy policy=policyService.validate(policy_id);
+		policy.setStatus(PolicyStatus.REJECTED);
+		policyService.insert(policy);
+	}
+	
 	
 	
 	
