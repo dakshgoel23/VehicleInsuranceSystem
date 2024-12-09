@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.VehicleInsuranceSystem.dto.ResponseMessageDto;
+import com.springboot.VehicleInsuranceSystem.enums.FuelType;
+import com.springboot.VehicleInsuranceSystem.enums.PolicyType;
+import com.springboot.VehicleInsuranceSystem.enums.VehicleCategory;
 import com.springboot.VehicleInsuranceSystem.exception.ResourceNotFoundException;
 import com.springboot.VehicleInsuranceSystem.model.Customer;
 import com.springboot.VehicleInsuranceSystem.model.Vehicle;
@@ -64,6 +67,19 @@ public class VehicleController {
 		List<Vehicle> list =  vehicleService.getVehicleDetails(customerId);
 		return ResponseEntity.ok(list);
 	}
+	
+	
+	@GetMapping("/vehicle/enumCategory/get")
+	public ResponseEntity<VehicleCategory[]> getAllVehicleCategory() {
+       
+        return ResponseEntity.ok(VehicleCategory.values());
+    }
+	
+	@GetMapping("/vehicle/enumFuelType/get")
+	public ResponseEntity<FuelType[]> getAllFuelType() {
+       
+        return ResponseEntity.ok(FuelType.values());
+    }
 	
 	
 	

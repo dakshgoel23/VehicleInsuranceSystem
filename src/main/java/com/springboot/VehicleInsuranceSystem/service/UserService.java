@@ -29,8 +29,9 @@ public class UserService {
 		//encrypt the password 
 		String encryptedPass = passEncoder.encode(user.getPassword());
 		user.setPassword(encryptedPass);
+		user.setRole(user.getRole());
 		
-		user.setRole(Role.CUSTOMER);
+		
 		
 		
 		return userRepository.save(user);

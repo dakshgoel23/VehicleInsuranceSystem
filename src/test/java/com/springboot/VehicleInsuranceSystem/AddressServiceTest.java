@@ -40,34 +40,30 @@ public class AddressServiceTest {
 	@Test
 	public void postCustomerTest()
 	{
-		        //arrangement using mocking 
+		       
 				when(addressRepository.save(address)).thenReturn(address);
 				
-				//Act : Calling the actual method 
+			
 				Address newAddress =   addressService.insert(address); 
 				
-				//test and compare 
+		
 				assertNotNull(newAddress);
-				//assertEquals(customer.getName(), newCustomer.getName());
+		
 				verify(addressRepository, times(1)).save(address);
 	}
 	
 	@Test
-	public void getByIdTest() {
-		//arrange
+	public void getByIdTest() throws ResourceNotFoundException {
+	
 		when(addressRepository.findById(1)).thenReturn(Optional.of(address));
 		
-		//act
+
 		Address newAddress = null;
-		try {
 			newAddress =  addressService.getById(1);
-		} catch (ResourceNotFoundException e) { }
+
 		
-		//test 
+
 		assertNotNull(newAddress);
-		//assertEquals(address.getName(), newCustomer.getName());
-		
-		//verify that repository method is getting called only once
 		verify(addressRepository, times(1)).findById(1);
 	}
 }

@@ -46,6 +46,10 @@ public class SecurityConfig {
 				 	.requestMatchers(HttpMethod.GET,"/customer/details/byId").hasAnyAuthority("ADMIN","CUSTOMER")// A
 				 	.requestMatchers(HttpMethod.POST,"/customer/update").hasAuthority("CUSTOMER")
 				 	.requestMatchers(HttpMethod.GET,"/api/get/customer").hasAuthority("CUSTOMER")
+				 	.requestMatchers(HttpMethod.GET,"/api/customer/image/upload/{cid}").hasAuthority("CUSTOMER")
+				 	.requestMatchers(HttpMethod.GET,"/images/one/{id}").hasAnyAuthority("CUSTOMER","ADMIN")
+				 
+				 	
 				 	
 				 	
 				 	
@@ -65,7 +69,9 @@ public class SecurityConfig {
 				 //Vehicle APIs
 				    .requestMatchers(HttpMethod.POST,"/vehicle/add").hasAuthority("CUSTOMER")
 				    .requestMatchers(HttpMethod.GET,"/vehicle/details/bycustomerId").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSPECTION")
-				    
+				    .requestMatchers(HttpMethod.GET,"/vehicle/enumCategory/get").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION","ADMIN")
+				    .requestMatchers(HttpMethod.GET,"/vehicle/enumFuelType/get").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION","ADMIN")
+				 
 				 //Policy APIs
 				    .requestMatchers(HttpMethod.POST,"/policy/add").hasAuthority("EXECUTIVE_INSURANCE")
 				    .requestMatchers(HttpMethod.GET,"/policy/all").hasAuthority("ADMIN")
@@ -74,9 +80,11 @@ public class SecurityConfig {
 				    .requestMatchers(HttpMethod.GET,"/policy/type/get").hasAuthority("ADMIN")
 				    .requestMatchers(HttpMethod.GET,"/policy/category/get").hasAuthority("ADMIN")
 				    .requestMatchers(HttpMethod.GET,"/policy/premium/get").hasAuthority("ADMIN")
-				    .requestMatchers(HttpMethod.GET,"/policy/byStatus").hasAuthority("EXECUTIVE_INSURANCE")
+				    .requestMatchers(HttpMethod.GET,"/policy/byStatus").hasAnyAuthority("EXECUTIVE_INSURANCE","ADMIN")
 				    .requestMatchers(HttpMethod.POST,"/policy/accept").hasAuthority("CUSTOMER")
 				    .requestMatchers(HttpMethod.POST,"/policy/reject").hasAuthority("CUSTOMER")
+				    .requestMatchers(HttpMethod.GET,"/policy/enumType/get").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION","ADMIN")
+				   
 				
 				    
 				    

@@ -85,4 +85,19 @@ public class User implements UserDetails{
 	public boolean isEnabled() {
 		return enabled;
 	}
+	public User(int id, String username, String password, Role role, boolean enabled) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.enabled = enabled;
+	}
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 }

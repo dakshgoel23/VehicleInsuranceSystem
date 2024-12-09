@@ -91,6 +91,25 @@ public class Vehicle {
 		this.category = category;
 	}
 
+	public Vehicle() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Vehicle(int id, String registration_number, String manufacturer, String model, FuelType fuel_type,
+			VehicleCategory category, Customer customer) {
+		super();
+		this.id = id;
+		this.registration_number = registration_number;
+		this.manufacturer = manufacturer;
+		this.model = model;
+		this.fuel_type = fuel_type;
+		this.category = category;
+		this.customer = customer;
+	}
+	
+	
+
 
 	
 

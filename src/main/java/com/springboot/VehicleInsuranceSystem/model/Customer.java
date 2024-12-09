@@ -80,6 +80,23 @@ public class Customer {
 		this.address = address;
 	}
 
+	public Customer(int id, String name, String phone, String aadhar_number, User user, Address address) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.aadhar_number = aadhar_number;
+		this.user = user;
+		this.address = address;
+	}
+
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
 
 	
 	

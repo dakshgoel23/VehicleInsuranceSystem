@@ -21,6 +21,8 @@ public interface PolicyRepository extends JpaRepository<Policy, Integer>{
 	List<Policy> getPolicyByPremiumAmount(double amt);
 
 	List<Policy> getPolicyByStatus(PolicyStatus status);
+
+
 	
 	
 

@@ -151,6 +151,14 @@ public class PolicyController {
 	}
 	
 	
+	@GetMapping("/policy/enumType/get")
+	public ResponseEntity<PolicyType[]> getAllPolicyTypes() {
+       
+        return ResponseEntity.ok(PolicyType.values());
+    }
+	
+	
+	
 	
 	
 	

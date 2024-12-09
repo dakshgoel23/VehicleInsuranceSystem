@@ -1,26 +1,29 @@
 package com.springboot.VehicleInsuranceSystem.controller;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.springboot.VehicleInsuranceSystem.dto.DocumentDto;
 import com.springboot.VehicleInsuranceSystem.dto.ResponseMessageDto;
 import com.springboot.VehicleInsuranceSystem.dto.UpdateProfileCustomerDto;
 import com.springboot.VehicleInsuranceSystem.enums.PolicyStatus;
 import com.springboot.VehicleInsuranceSystem.exception.ResourceNotFoundException;
 import com.springboot.VehicleInsuranceSystem.model.Address;
 import com.springboot.VehicleInsuranceSystem.model.Customer;
+import com.springboot.VehicleInsuranceSystem.model.CustomerDocument;
 import com.springboot.VehicleInsuranceSystem.model.User;
 import com.springboot.VehicleInsuranceSystem.repository.AddressRepository;
-import com.springboot.VehicleInsuranceSystem.service.AddressService;
 import com.springboot.VehicleInsuranceSystem.service.CustomerService;
 import com.springboot.VehicleInsuranceSystem.service.UserService;
 
@@ -75,17 +78,6 @@ public class CustomerController {
 	@GetMapping("/customer/proposedpolicies")
 	public ResponseEntity<?> seeAllProposedPolicies(@RequestParam int customer_id,@RequestParam PolicyStatus status, ResponseMessageDto dto)
 	{
-//		Customer customer=null;
-//		try
-//		{
-//			customer=customerService.validate(customer_id);
-//		}
-//		catch(ResourceNotFoundException e)
-//		{
-//			dto.setMsg(e.getMessage());
-//			return ResponseEntity.badRequest().body(dto);
-//			
-//		}
 		
 		List<Object> list=customerService.findallproposedpolicies(customer_id,status);
 		return ResponseEntity.ok(list);
@@ -112,6 +104,34 @@ public class CustomerController {
 	@GetMapping("/api/get/customer")
 	public Customer getCustomer(@RequestParam int user_id) throws ResourceNotFoundException {
 		return customerService.getCustomerDetails(user_id);
+	}
+	
+	
+	
+	
+	@PostMapping("/api/customer/image/upload/{cid}")
+	public CustomerDocument uloadImage(@PathVariable int cid, @RequestParam MultipartFile file) 
+	throws IOException, ResourceNotFoundException{
+		
+		return customerService.uploadImage(cid,file);
+		
+		
+	}
+	
+	
+	@GetMapping("/images/one/{id}")
+	public DocumentDto getById(@PathVariable int id) throws ResourceNotFoundException {
+		 Customer c = customerService.findCustomer(id);
+			List<CustomerDocument> imageList= customerService.getAllImages();
+		 DocumentDto dto = new DocumentDto();
+		    dto.setId(c.getId());
+			List<CustomerDocument> iList =
+					imageList.stream()
+						.filter(i->i.getCustomer().getId() == c.getId())
+						.toList();
+			dto.setImages(iList);
+		
+			return dto; 
 	}
 	
 

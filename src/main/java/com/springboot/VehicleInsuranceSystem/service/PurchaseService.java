@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.VehicleInsuranceSystem.model.Customer;
 import com.springboot.VehicleInsuranceSystem.model.CustomerHasPolicy;
-import com.springboot.VehicleInsuranceSystem.model.Policy;
 import com.springboot.VehicleInsuranceSystem.repository.PurchaseRepository;
 
 @Service
