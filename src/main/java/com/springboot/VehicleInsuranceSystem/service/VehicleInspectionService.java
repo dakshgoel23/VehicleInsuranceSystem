@@ -34,4 +34,8 @@ public class VehicleInspectionService {
 		return vehicleInspectionRepository.showInspectionbooked(status);
 	}
 
+	public List<VehicleInspection> getAllInspections(List<Integer> list) {
+		return vehicleInspectionRepository.findAllInspections(list);
+	}
+
 }

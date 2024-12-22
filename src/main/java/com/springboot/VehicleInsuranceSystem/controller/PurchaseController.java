@@ -23,7 +23,7 @@ import com.springboot.VehicleInsuranceSystem.service.PurchaseService;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4210"})
 public class PurchaseController {
 	
 	@Autowired

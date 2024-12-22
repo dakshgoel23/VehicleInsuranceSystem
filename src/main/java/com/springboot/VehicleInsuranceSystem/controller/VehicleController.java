@@ -25,7 +25,7 @@ import com.springboot.VehicleInsuranceSystem.service.VehicleService;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4210"})
 public class VehicleController {
 	
 	@Autowired
@@ -64,7 +64,7 @@ public class VehicleController {
 			return ResponseEntity.badRequest().body(dto);
 		}
 
-		List<Vehicle> list =  vehicleService.getVehicleDetails(customerId);
+		List<Integer> list =  vehicleService.getVehicleDetails(customerId);
 		return ResponseEntity.ok(list);
 	}
 	

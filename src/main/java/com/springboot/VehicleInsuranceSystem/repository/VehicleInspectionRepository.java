@@ -16,4 +16,7 @@ public interface VehicleInspectionRepository extends JpaRepository<VehicleInspec
 	@Query("select vi from VehicleInspection vi join vi.vehicle v where vi.status=?1")
 	List<VehicleInspection> showInspectionbooked(InspectionStatus status);
 
+	@Query("select i from VehicleInspection i where i.vehicle.id in ?1")
+	List<VehicleInspection> findAllInspections(List<Integer> list);
+
 }

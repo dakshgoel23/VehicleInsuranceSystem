@@ -13,7 +13,7 @@ import com.springboot.VehicleInsuranceSystem.model.Vehicle;
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Integer>{
 
-	@Query("select v from Vehicle v JOIN v.customer c where c.id=?1")
-	List<Vehicle> findbyCustomer(int customerId);
+	@Query("select v.id from Vehicle v JOIN v.customer c where c.id=?1")
+	List<Integer> findbyCustomer(int customerId);
 
 }

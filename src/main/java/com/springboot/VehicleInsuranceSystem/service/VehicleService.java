@@ -22,7 +22,7 @@ public class VehicleService {
 		return vehicleRepository.save(vehicle);
 	}
 
-	public List<Vehicle> getVehicleDetails(int customerId) {
+	public List<Integer> getVehicleDetails(int customerId) {
 		return vehicleRepository.findbyCustomer(customerId);
 	}
 	

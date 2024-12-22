@@ -25,7 +25,7 @@ import com.springboot.VehicleInsuranceSystem.service.PremiumCalculationService;
 import com.springboot.VehicleInsuranceSystem.service.VehicleService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4210"})
 public class PolicyController {
 
 	@Autowired

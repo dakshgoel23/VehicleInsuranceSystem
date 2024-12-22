@@ -97,6 +97,8 @@ public class SecurityConfig {
 				    .requestMatchers(HttpMethod.GET,"/vehicle/vehicle-inspection/book").hasAnyAuthority("EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION")
 				    .requestMatchers(HttpMethod.POST,"/vehicle-inspection/completed").hasAuthority("EXECUTIVE_INSPECTION")
 				    .requestMatchers(HttpMethod.POST,"/inspection/changestatus").hasAuthority("EXECUTIVE_INSURANCE")
+				    .requestMatchers(HttpMethod.GET,"/vehicle-inspections/all").permitAll()
+				    
 				
 				    
 				   

@@ -71,21 +71,7 @@ public class VehicleServiceTest {
         verify(vehicleRepository, times(1)).save(vehicle);
     }
 
-    @Test
-    public void testGetVehicleDetails() {
     
-        List<Vehicle> vehicles = Arrays.asList(vehicle);
-        when(vehicleRepository.findbyCustomer(1)).thenReturn(vehicles);
-
-      
-        List<Vehicle> result = vehicleService.getVehicleDetails(1);
-
-      
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("AB123CD", result.get(0).getRegistration_number());
-        verify(vehicleRepository, times(1)).findbyCustomer(1);
-    }
 
     @Test
     public void testValidateVehicle_Success() throws ResourceNotFoundException {

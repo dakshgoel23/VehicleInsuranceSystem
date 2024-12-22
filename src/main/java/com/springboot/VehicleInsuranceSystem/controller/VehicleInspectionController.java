@@ -26,7 +26,7 @@ import com.springboot.VehicleInsuranceSystem.service.VehicleService;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4210"})
 public class VehicleInspectionController {
 	
 	@Autowired
@@ -37,6 +37,8 @@ public class VehicleInspectionController {
 	
 	@Autowired
 	private VehicleService vehicleService;
+	
+	
 	
 
 	
@@ -122,6 +124,15 @@ public class VehicleInspectionController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 				
+	}
+	
+	@GetMapping("/vehicle-inspections/all")
+	public ResponseEntity<?> showAllInspections(@RequestParam int customer_id) throws ResourceNotFoundException
+	{
+		List<Integer> list=vehicleService.getVehicleDetails(customer_id);
+		List<VehicleInspection> list2=vehicleInspectionService.getAllInspections(list);
+		return ResponseEntity.ok(list2);
+		
 	}
 	
 	@PostMapping("/inspection/changestatus")

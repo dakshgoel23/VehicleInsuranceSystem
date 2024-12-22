@@ -30,7 +30,7 @@ import com.springboot.VehicleInsuranceSystem.service.UserService;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4210"})
 public class CustomerController {
 	
 	@Autowired

@@ -11,7 +11,7 @@ import com.springboot.VehicleInsuranceSystem.service.AddressService;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4210"})
 public class AddressController {
 	@Autowired
 	private AddressService addressService;
