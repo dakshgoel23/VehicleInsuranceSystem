@@ -64,7 +64,7 @@ public class VehicleController {
 			return ResponseEntity.badRequest().body(dto);
 		}
 
-		List<Integer> list =  vehicleService.getVehicleDetails(customerId);
+		List<Vehicle> list =  vehicleService.getVehicleDetails(customerId);
 		return ResponseEntity.ok(list);
 	}
 	

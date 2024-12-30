@@ -68,7 +68,8 @@ public class SecurityConfig {
 				    
 				 //Vehicle APIs
 				    .requestMatchers(HttpMethod.POST,"/vehicle/add").hasAuthority("CUSTOMER")
-				    .requestMatchers(HttpMethod.GET,"/vehicle/details/bycustomerId").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSPECTION")
+//				    .requestMatchers(HttpMethod.GET,"/vehicle/details/bycustomerId").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSPECTION")
+				    .requestMatchers(HttpMethod.GET,"/vehicle/details/bycustomerId").permitAll()
 				    .requestMatchers(HttpMethod.GET,"/vehicle/enumCategory/get").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION","ADMIN")
 				    .requestMatchers(HttpMethod.GET,"/vehicle/enumFuelType/get").hasAnyAuthority("CUSTOMER","EXECUTIVE_INSURANCE","EXECUTIVE_INSPECTION","ADMIN")
 				 

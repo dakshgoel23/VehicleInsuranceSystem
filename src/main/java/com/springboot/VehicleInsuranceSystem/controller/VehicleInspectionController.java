@@ -129,7 +129,7 @@ public class VehicleInspectionController {
 	@GetMapping("/vehicle-inspections/all")
 	public ResponseEntity<?> showAllInspections(@RequestParam int customer_id) throws ResourceNotFoundException
 	{
-		List<Integer> list=vehicleService.getVehicleDetails(customer_id);
+		List<Integer> list=vehicleService.getVehicleIds(customer_id);
 		List<VehicleInspection> list2=vehicleInspectionService.getAllInspections(list);
 		return ResponseEntity.ok(list2);
 		
